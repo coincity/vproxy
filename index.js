@@ -50,7 +50,6 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const CHANNELS_CACHE_KEY = 'vavoo_channels';
 const SIGNATURE_CACHE_KEY = 'vavoo_addon_sig';
 const COUNTRY_SEPARATORS = ['➾', '⟾', '->', '→', '»', '›'];
-const PLAYLIST_STREAM_OPTIONS = 'User-Agent=VAVOO/2.6&verifypeer=false&verify=false&ssl_verify=false';
 const PING_URLS = [
     'https://www.lokke.app/api/app/ping',
     'https://www.vavoo.tv/api/app/ping'
@@ -686,7 +685,7 @@ app.get('/channels.m3u8', async function (req, res) {
             output.push(`#EXTINF:-1 tvg-name="${channel.name}" group-title="${channel.country}" tvg-logo="${channel.logo}" tvg-id="${channel.name}",${channel.name}`);
             output.push('#EXTVLCOPT:http-user-agent=VAVOO/2.6');
             output.push('#EXTVLCOPT:no-ssl-verify');
-            output.push(`${req.protocol}://${req.headers.host}/stream/${encodeURIComponent(channel.id)}|${PLAYLIST_STREAM_OPTIONS}`);
+            output.push(`${req.protocol}://${req.headers.host}/stream/${encodeURIComponent(channel.id)}`);
         }
 
         res.send(output.join('\n'));
