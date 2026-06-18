@@ -691,7 +691,7 @@ app.get('/canales.m3u8', async function (req, res) {
                 groupTitle = 'DAZN';
             } else if (name.includes('liga')) {
                 groupTitle = 'LIGA';
-            } else if (name.includes('movistar') || name.includes('m+')) {
+            } else if (name.includes('movistar') || name.includes('m.') || name.includes('vamos') || name.includes('m+')) {
                 groupTitle = 'M+';
             } else if (name.includes('amc')) {
                 groupTitle = 'AMC';
